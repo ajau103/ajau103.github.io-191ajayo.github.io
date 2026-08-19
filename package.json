@@ -1,19 +1,14 @@
 {
-  "name": "react-app",
-  "private": true,
+  "name": "worknest",
   "version": "1.0.0",
-  "type": "module",
+  "description": "WorkNest Premium Coworking Space",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "22.x"
   },
   "dependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^5.0.2",
-    "vite": "^7.1.2"
+    "express": "^5.1.0"
   }
 }
