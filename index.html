@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Find Your Next Home | Real Estate Experts</title>
+  <meta name="description" content="Explore homes and real estate opportunities with experienced local professionals. Request information today.">
+
+  <style>
+    :root {
+      --primary: #173f5f;
+      --primary-dark: #102f47;
+      --accent: #d6a84f;
+      --light: #f7f8fa;
+      --white: #ffffff;
+      --dark: #17202a;
+      --text: #5d6875;
+      --border: #e5e8eb;
+      --success: #287a50;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 15px;
+      color: #394552;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .phone-btn {
+      background: var(--primary);
+      color: var(--white);
+      padding: 11px 18px;
+      border-radius: 6px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .phone-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(12, 31, 46, 0.92), rgba(12, 31, 46, 0.55)),
+        url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85")
+        center/cover no-repeat;
+    }
+
+    .hero-container {
+      width: 100%;
+      max-width: 1180px;
+      margin: auto;
+      padding: 70px 24px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .hero-content {
+      color: var(--white);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: #f0ce85;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      max-width: 650px;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 6px;
+      font-weight: 800;
+      border: 2px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #1c1c1c;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,0.7);
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--primary);
+    }
+
+    /* LEAD FORM */
+    .lead-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.22);
+    }
+
+    .lead-card h2 {
+      color: var(--primary);
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    .lead-card > p {
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #394552;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #d6dce1;
+      border-radius: 5px;
+      font-size: 15px;
+      outline: none;
+      background: #fff;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(23,63,95,0.08);
+    }
+
+    .submit-btn {
+      width: 100%;
+      border: 0;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 5px;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 800;
+      margin-top: 4px;
+    }
+
+    .submit-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .form-note {
+      margin-top: 12px;
+      font-size: 11px;
+      line-height: 1.5;
+      color: #7b858f;
+      text-align: center;
+    }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .trust-container {
+      max-width: 1180px;
+      margin: auto;
+      padding: 25px 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      text-align: center;
+    }
+
+    .trust-item strong {
+      display: block;
+      color: var(--primary);
+      font-size: 17px;
+      margin-bottom: 3px;
+    }
+
+    .trust-item span {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 85px 24px;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin: 0 auto 50px;
+      text-align: center;
+    }
+
+    .section-heading .eyebrow {
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .section-heading h2 {
+      color: var(--primary);
+      font-size: 38px;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .section-heading p {
+      color: var(--text);
+    }
+
+    /* BENEFITS */
+    .benefits {
+      background: var(--light);
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 32px;
+      border-radius: 8px;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #eef3f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .benefit-card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .benefit-card p {
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    /* PROCESS */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 35px;
+      position: relative;
+    }
+
+    .process-card {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .number {
+      width: 55px;
+      height: 55px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .process-card h3 {
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .process-card p {
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    /* CTA */
+    .cta {
+      background: var(--primary);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 40px;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      max-width: 650px;
+      margin: 0 auto 28px;
+      color: rgba(255,255,255,0.82);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0e2638;
+      color: rgba(255,255,255,0.7);
+      padding: 45px 24px 25px;
+    }
+
+    .footer-grid {
+      max-width: 1180px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 35px;
+    }
+
+    footer h3 {
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    footer p,
+    footer a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.68);
+    }
+
+    footer a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      max-width: 1180px;
+      margin: auto;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .benefit-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-container {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .nav {
+        padding: 15px;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .phone-btn {
+        padding: 9px 12px;
+        font-size: 13px;
+      }
+
+      .hero-container {
+        padding: 50px 18px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .lead-card {
+        padding: 24px 20px;
+      }
+
+      section {
+        padding: 65px 18px;
+      }
+
+      .section-heading h2,
+      .cta h2 {
+        font-size: 31px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="nav">
+      <a href="#top" class="logo">Prime<span>Estate</span></a>
+
+      <div class="nav-links">
+        <a href="#benefits">Why Us</a>
+        <a href="#process">How It Works</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <!-- Replace with your real US business number -->
+      <a href="tel:+18005550147" class="phone-btn">
+        Call (800) 555-0147
+      </a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-container">
+
+        <div class="hero-content">
+          <span class="eyebrow">Real Estate Made Simple</span>
+
+          <h1>Find a Place You'll Be Proud to Call Home</h1>
+
+          <p>
+            Get personalized guidance from real estate professionals who
+            can help you explore properties and take the next step with confidence.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">
+              Get Property Information
+            </a>
+
+            <a href="tel:+18005550147" class="btn btn-outline">
+              Call Us Today
+            </a>
+          </div>
+        </div>
+
+        <!-- LEAD FORM -->
+        <div class="lead-card" id="contact">
+          <h2>Let's Find Your Property</h2>
+
+          <p>
+            Tell us what you're looking for and a member of our team can
+            contact you with more information.
+          </p>
+
+          <form id="leadForm">
+
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your full name"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="(555) 555-5555"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="property">What are you looking for?</label>
+
+              <select id="property" name="property" required>
+                <option value="">Select an option</option>
+                <option value="buy">I want to buy</option>
+                <option value="sell">I want to sell</option>
+                <option value="investment">Investment property</option>
+                <option value="information">General information</option>
+              </select>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              Request Information
+            </button>
+
+            <p class="form-note">
+              By submitting this form, you agree that a real estate
+              professional may contact you regarding your request.
+            </p>
+
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TRUST -->
+    <div class="trust-bar">
+      <div class="trust-container">
+
+        <div class="trust-item">
+          <strong>Personalized Guidance</strong>
+          <span>Support based on your goals</span>
+        </div>
+
+        <div class="trust-item">
+          <strong>Local Market Knowledge</strong>
+          <span>Practical real estate insights</span>
+        </div>
+
+        <div class="trust-item">
+          <strong>Clear Communication</strong>
+          <span>Answers when you need them</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <section class="benefits" id="benefits">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">Why Choose Us</span>
+          <h2>A Better Way to Navigate Real Estate</h2>
+          <p>
+            Whether you're buying, selling, or exploring your options,
+            we're here to make the process easier to understand.
+          </p>
+        </div>
+
+        <div class="benefit-grid">
+
+          <div class="benefit-card">
+            <div class="icon">⌂</div>
+            <h3>Property Guidance</h3>
+            <p>
+              Get help understanding available properties and identifying
+              options that fit your needs and priorities.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="icon">✓</div>
+            <h3>Professional Support</h3>
+            <p>
+              Work with knowledgeable professionals who can guide you
+              through the important steps of your real estate journey.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="icon">◆</div>
+            <h3>Focused on Your Goals</h3>
+            <p>
+              We take the time to understand what matters to you before
+              helping you explore your next real estate opportunity.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">Simple Process</span>
+          <h2>Getting Started Is Easy</h2>
+          <p>
+            Take the first step today and let our team help you understand
+            your options.
+          </p>
+        </div>
+
+        <div class="process-grid">
+
+          <div class="process-card">
+            <div class="number">1</div>
+            <h3>Tell Us What You Need</h3>
+            <p>
+              Complete the short form and share what you're looking for.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="number">2</div>
+            <h3>Speak With Our Team</h3>
+            <p>
+              A member of our team can contact you to discuss your goals.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="number">3</div>
+            <h3>Explore Your Options</h3>
+            <p>
+              Review relevant opportunities and decide what works for you.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container">
+
+        <h2>Ready to Explore Your Options?</h2>
+
+        <p>
+          Get in touch today and take the first step toward your next
+          real estate opportunity.
+        </p>
+
+        <a href="#contact" class="btn btn-primary">
+          Get Started
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-grid">
+
+      <div>
+        <h3>PrimeEstate</h3>
+        <p>
+          Professional real estate guidance for buyers, sellers,
+          and property seekers.
+        </p>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <p><a href="#benefits">Why Us</a></p>
+        <p><a href="#process">How It Works</a></p>
+        <p><a href="#contact">Contact</a></p>
+      </div>
+
+      <div>
+        <h3>Contact</h3>
+        <p>
+          <a href="tel:+18005550147">
+            (800) 555-0147
+          </a>
+        </p>
+        <p>United States</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 PrimeEstate. All rights reserved.
+    </div>
+
+  </footer>
+
+  <script>
+    /*
+      Demo form behavior.
+
+      Replace this section with your actual lead-processing endpoint,
+      CRM integration, or form service before running paid traffic.
+    */
+
+    document.getElementById("leadForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const button = this.querySelector(".submit-btn");
+
+      button.textContent = "Thank You!";
+      button.disabled = true;
+
+      setTimeout(() => {
+        alert(
+          "Thank you for your request. Please connect this form to your CRM or lead-processing system before launch."
+        );
+
+        button.textContent = "Request Information";
+        button.disabled = false;
+        this.reset();
+      }, 500);
+    });
+  </script>
+
+</body>
+</html>
